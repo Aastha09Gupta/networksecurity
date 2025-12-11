@@ -5,7 +5,7 @@ from sklearn.impute import KNNImputer
 from sklearn.pipeline import Pipeline
 from networksecurity.constant.training_pipeline import TARGET_COLUMN
 from networksecurity.constant.training_pipeline import DATA_TRANSFORMATION_IMPUTER_PARAMS
-from networksecurity.entity.artifact_entity import DataValidationArtifact, DataTransforamtionArtifact
+from networksecurity.entity.artifact_entity import DataValidationArtifact, DataTransformationArtifact
 from networksecurity.entity.config_entity import DataTransformationConfig
 from networksecurity.exception.exception import NetworkSecurityException
 from networksecurity.logging.logger import logging
@@ -47,7 +47,7 @@ class DataTransformation:
         except Exception as e:
             raise NetworkSecurityException(e, sys) from e
         
-    def initiate_data_transformation(self)-> DataTransforamtionArtifact:
+    def initiate_data_transformation(self)-> DataTransformationArtifact:
         try:
             logging.info("Entered initiate_data_transformation method od DataTransforamtion class")
             train_df=DataTransformation.read_data(self.data_validation_artifact.valid_train_file_path)
@@ -79,7 +79,7 @@ class DataTransformation:
 
             ##preparing artifacts
 
-            data_transformation_artifact=DataTransforamtionArtifact(
+            data_transformation_artifact=DataTransformationArtifact(
                 transformed_object_file_path=self.data_transformation_config.transformed_object_file_path,
                 transformed_train_file_path=self.data_transformation_config.transformed_train_file_path,    
                 transformed_test_file_path=self.data_transformation_config.transformed_test_file_path
