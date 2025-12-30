@@ -113,6 +113,8 @@ class ModelTrainer:
         #model pusher
         save_object("final_model/model.pkl",best_model)
 
+
+
         ## Model Trainer Artifact
         model_trainer_artifact=ModelTrainerArtifact(trained_model_file_path=self.model_trainer_config.trained_model_file_path,
                              trained_metric_artifact=classification_train_metric,
